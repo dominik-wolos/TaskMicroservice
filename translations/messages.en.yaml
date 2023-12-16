@@ -1,0 +1,8 @@
+app:
+  navbar:
+    name: "LifeOrganizer"
+    home: "Home"
+    about: "About"
+    contact: "Contact"
+  ui:
+    title: "My App"
