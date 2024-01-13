@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="p-5 m-5" style="background-color: gray">
+        {{ form_start(form, {'action': path('app_reservation_create')}) }}
+        <div id="form-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="d-flex row">
+            <div class="d-flex flex-column col-4">
+                <div class="col-form-label">
+                    {{ form_label(form.start_date) }}
+                </div>
+                <div class="col-form-widget">
+                    {{ form_widget(form.start_date) }}
+                </div>
+            </div>
+            <div class="d-flex flex-column col-4">
+                <div class="col-form-label">
+                    {{ form_label(form.duration) }}
+                </div>
+                <div class="col-form-widget">
+                    {{ form_widget(form.duration) }}
+                </div>
+            </div>
+            <div class="d-flex flex-column col-4">
+                <div class="col-form-label">
+                    {{ form_label(form.name) }}
+                </div>
+                <div class="col-form-widget">
+                    {{ form_widget(form.name) }}
+                </div>
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="d-flex flex-column col-12">
+                <div class="col-form-label">
+                    {{ form_label(form.description) }}
+                </div>
+                <div class="col-form-widget">
+                    {{ form_widget(form.description, { 'attr': {'class': 'w-100'} }) }}
+                </div>
+            </div>
+        </div>
+{#        <input type="hidden" name="token" value="{{ csrf_token('delete-item') }}">#}
+        {{ form_row(form.submit, {'attr': {'class': 'btn btn-primary mt-3'}}) }}
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+{% endblock  %}

@@ -1,8 +1,30 @@
 app:
   navbar:
-    name: "LifeOrganizer"
+    name: "Nails"
     home: "Home"
     about: "About"
     contact: "Contact"
   ui:
     title: "My App"
+  common:
+    name: "Name"
+    email: "Email"
+    phone: "Phone"
+    message: "Message"
+    submit: "Submit"
+    send: "Send"
+    cancel: "Cancel"
+    description: "Description"
+  reservation:
+    title: "Reservations"
+    new: "New Reservation"
+    edit: "Edit Reservation"
+    list: "List Reservations"
+    show: "Show Reservation"
+    delete: "Delete Reservation"
+    empty_list: "No reservations found"
+    duration: "Duration (minutes)"
+    reservation_date: "Reservation Date"
+    period: "Period"
+    end_date: "End Date"
+    start_date: "Start Date"

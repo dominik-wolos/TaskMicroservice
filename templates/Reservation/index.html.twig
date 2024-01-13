@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="d-flex justify-content-between m-3">
+        <h1>{{ 'app.reservation.list'|trans }}</h1>
+        <a
+            href="{{ path('app_reservation_create') }}"
+            class="btn btn btn-secondary p-2"
+            style="height: min-content;"
+            >
+            {{ 'app.reservation.new'|trans }}
+        </a>
+    </div>
+    <div class="align-content-center m-4">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">{{ 'app.reservation.period'|trans }}</th>
+                <th scope="col">{{ 'app.reservation.duration'|trans }}</th>
+                <th scope="col">{{ 'app.reservation.reservation_date'|trans }}</th>
+                <th scope="col">{{ 'app.common.description'|trans }}</th>
+                <th scope="col">{{ 'app.common.name'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if reservations is empty %}
+            <tr class="justify-content-center">
+                <td colspan="5">
+                    <span class="d-flex flex-column text-center">
+                        {{ 'app.reservation.empty_list'|trans }}
+                    </span>
+                </td>
+            </tr>
+            {% else %}
+                {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.reservationPeriod }}</td>
+                        <td>{{ reservation.duration }}</td>
+                        <td>{{ reservation.reservedAt|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ reservation.description}}</td>
+                        <td>{{ reservation.name}}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock  %}
