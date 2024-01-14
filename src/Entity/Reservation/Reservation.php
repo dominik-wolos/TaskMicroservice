@@ -27,7 +27,7 @@ class Reservation implements ReservationInterface
     #[ORM\Column(type: 'integer', nullable: false)]
     private int $duration;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true, length: 100)]
     private ?string $description;
 
     #[ORM\Column(type: 'string', nullable: false)]

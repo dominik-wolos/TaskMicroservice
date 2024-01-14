@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Range;
 
 final class ReservationType extends AbstractType
 {
@@ -22,18 +25,39 @@ final class ReservationType extends AbstractType
         $builder->add('start_date', DateTimeType::class, [
             'label' => 'app.reservation.start_date',
             'date_widget' => 'single_text',
+            'constraints' => [
+                new GreaterThan(
+                    new \DateTime("+3 hours")
+                ),
+            ]
         ])
         ->add('description', TextareaType::class, [
             'label' => 'app.common.description',
+            'constraints' => [
+                new Length([
+                    'min' => 20,
+                    'max' => 100,
+                ]),
+            ]
         ])
         ->add('name', TextType::class, [
             'label' => 'app.common.name',
+            'constraints' => [
+                new Length([
+                    'min' => 4,
+                    'max' => 20,
+                ]),
+            ]
         ])
         ->add('duration', IntegerType::class, [
             'label' => 'app.reservation.duration',
-        ])
-        ->add('submit', SubmitType::class, [
-            'label' => 'app.common.submit',
+            'required' => false,
+            'constraints' => [
+                new Range([
+                    'min' => 1,
+                    'max' => 60,
+                ]),
+            ],
         ]);
     }
 
@@ -41,9 +65,6 @@ final class ReservationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Reservation::class,
-            'csrf_protection' => true,
-            'csrf_field_name' => '_token',
-            'csrf_token_id'   => 'task_item',
         ]);
     }
 

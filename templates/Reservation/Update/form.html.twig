@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="p-5 m-5" style="background-color: #dedede; color: black;">
-        {{ form_start(form, {'action': path('app_reservation_create')}) }}
+        {{ form_start(form, {'action': path('app_reservation_update', {'id': reservation.id})}) }}
         <div id="form-errors">
             {{ form_errors(form) }}
         </div>

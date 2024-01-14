@@ -8,13 +8,13 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <div class="d-flex">
                     <li class="nav-item"    >
-                        <a class="nav-link active" aria-current="page" href="#">{{ 'app.navbar.home'|trans }}</a>
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_reservation_index') }}">{{ 'app.navbar.home'|trans }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ 'app.navbar.about'|trans }}</a>
+                        <a class="nav-link" href="{{ path('app_stylist_index') }}">{{ 'app.navbar.about'|trans }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ 'app.navbar.contact'|trans }}</a>
+                        <a class="nav-link" href="{{ path('app_login') }}">{{ 'app.navbar.login'|trans }}</a>
                     </li>
                 </div>
             </ul>

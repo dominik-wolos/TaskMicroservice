@@ -58,9 +58,58 @@ final class ReservationController extends AbstractController
             return $this->redirectToRoute('app_reservation_index');
         }
 
-        return new Response($this->twig->render('Reservation/Create/form.html.twig', [
+        $response = new Response(null, $form->isSubmitted() ? 422 : 200);
+
+        return $this->render('Reservation/Create/form.html.twig', [
+            'form' => $form->createView()
+        ], $response);
+    }
+
+    #[Route(path: '/reservations/{id}/edit', name: 'app_reservation_update', methods: ['GET', 'POST'])]
+    public function taskUpdate(Request $request): Response
+    {
+        $id = $request->get('id');
+
+        $reservation = $this->entityManager->getRepository(Reservation::class)->find($id);
+
+        if (!$reservation) {
+            return $this->redirectToRoute('app_reservation_index');
+        }
+
+        $form = $this->formFactory->create(ReservationType::class, $reservation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $reservation = $form->getData();
+
+            $this->entityManager->persist($reservation);
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('app_reservation_index');
+        }
+
+        $response = new Response(null, $form->isSubmitted() ? 422 : 200);
+
+        return $this->render('Reservation/Update/form.html.twig', [
             'form' => $form->createView(),
-            'errors' => $form->getErrors(),
-        ]));
+            'reservation' => $reservation,
+        ], $response);
+    }
+
+    #[Route(path: '/reservations/{id}/delete', name: 'app_reservation_delete', methods: ['GET', 'POST'])]
+    public function taskDelete(Request $request): Response
+    {
+        $id = $request->get('id');
+
+        $reservation = $this->entityManager->getRepository(Reservation::class)->find($id);
+
+        if (!$reservation) {
+            throw new \RuntimeException(sprintf('Reservation with id %d not found', $id));
+        }
+
+        $this->entityManager->remove($reservation);
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('app_reservation_index');
     }
 }

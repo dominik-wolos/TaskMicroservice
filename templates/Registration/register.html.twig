@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="p-5 m-5" style="background-color: #dedede; color: black;">
+        <h1>{{ 'app.registration.registration'|trans }}</h1>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

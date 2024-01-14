@@ -5,7 +5,7 @@
         <h1>{{ 'app.reservation.list'|trans }}</h1>
         <a
             href="{{ path('app_reservation_create') }}"
-            class="btn btn btn-secondary p-2"
+            class="btn btn btn-success p-2"
             style="height: min-content;"
             >
             {{ 'app.reservation.new'|trans }}
@@ -20,6 +20,7 @@
                 <th scope="col">{{ 'app.reservation.reservation_date'|trans }}</th>
                 <th scope="col">{{ 'app.common.description'|trans }}</th>
                 <th scope="col">{{ 'app.common.name'|trans }}</th>
+                <th scope="col">{{ 'app.common.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -39,6 +40,19 @@
                         <td>{{ reservation.reservedAt|date('Y-m-d H:i:s') }}</td>
                         <td>{{ reservation.description}}</td>
                         <td>{{ reservation.name}}</td>
+                        <td>
+                            <form action="{{ path('app_reservation_update', {'id': reservation.id}) }}" method="get">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ 'app.reservation.edit'|trans }}
+                                </button>
+                            </form>
+                            <div class="mt-3"></div>
+                            <form action="{{ path('app_reservation_delete', {'id': reservation.id}) }}" method="post">
+                                <button type="submit" class="btn btn-danger">
+                                    {{ 'app.reservation.delete'|trans }}
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
             {% endif %}

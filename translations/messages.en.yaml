@@ -4,8 +4,11 @@ app:
     home: "Home"
     about: "About"
     contact: "Contact"
+    login: "Login"
   ui:
     title: "My App"
+    login: "Login"
+    logout: "Logout"
   common:
     name: "Name"
     email: "Email"
@@ -15,6 +18,8 @@ app:
     send: "Send"
     cancel: "Cancel"
     description: "Description"
+    age: 'Age'
+    actions: 'Actions'
   reservation:
     title: "Reservations"
     new: "New Reservation"
@@ -28,3 +33,11 @@ app:
     period: "Period"
     end_date: "End Date"
     start_date: "Start Date"
+  stylists:
+    working_hours: 'Working hours'
+    speciality: 'Speciality'
+  registration:
+    registration: "Registration"
+    register: "Register"
+    password: "Password"
+    password_confirmation: "Password confirmation"
