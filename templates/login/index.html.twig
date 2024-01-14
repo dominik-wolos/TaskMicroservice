@@ -3,31 +3,35 @@
 {% block title %}{{ "app.navbar.login"|trans }}{% endblock %}
 
 {% block body %}
-    <?php if ($logout_setup): ?>
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% else %}
     <div class="p-5 m-5" style="background-color: #dedede; color: black;">
-        <form method="post">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-            <?php endif; ?>
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <label for="username">Email</label>
-            <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-            <label for="password">Password</label>
-            <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"
-            >
-
-            <button class="btn btn-lg btn-primary" type="submit">
-                Sign in
-            </button>
-        </form>
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}. <br>
+                <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% else %}
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <h1 class="h3 mb-3 font-weight-normal">{{ 'app.security.login'|trans }}</h1>
+                <label for="username">{{ 'app.security.username'|trans }}</label>
+                <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control"
+                       autocomplete="email" required autofocus>
+                <label for="password">{{ 'app.security.password'|trans }}</label>
+                <input type="password" name="_password" id="password" class="form-control"
+                       autocomplete="current-password" required>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <button class="btn btn-lg btn-primary mt-3" type="submit">
+                    {{ 'app.security.login'|trans }}
+                </button>
+            </form>
+        {% endif %}
+        <div class="row mt-5">
+            <span>
+                {{ 'app.security.if_you_do_not_have_an_account'|trans }}
+                <a href="{{ path('registration') }}">{{ 'app.security.register'|trans }}</a>
+            </span>
+        </div>
     </div>
-    {% endif %}
 {% endblock %}

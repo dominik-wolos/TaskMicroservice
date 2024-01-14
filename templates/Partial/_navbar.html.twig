@@ -1,23 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">{{ 'app.navbar.name'|trans }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="{{ path('app_homepage') }}">{{ 'app.navbar.name'|trans }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <div class="d-flex">
-                    <li class="nav-item"    >
+            <div class="d-flex flex-row">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_reservation_index') }}">{{ 'app.navbar.home'|trans }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_stylist_index') }}">{{ 'app.navbar.about'|trans }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_login') }}">{{ 'app.navbar.login'|trans }}</a>
-                    </li>
-                </div>
-            </ul>
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <a class="nav-link text-black" href="{{ path('app_login') }}">
+                <i class="fas fa-lock"></i>
+                {{ 'app.navbar.login'|trans }}
+            </a>
         </div>
     </div>
 </nav>

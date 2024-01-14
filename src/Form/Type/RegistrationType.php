@@ -19,10 +19,10 @@ class RegistrationType extends AbstractType
             ->add('email', TextType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'app.registration.password'],
-                'second_options' => ['label' => 'app.registration.password_confirmation'],
+                'first_options' => ['label' => 'app.security.password'],
+                'second_options' => ['label' => 'app.security.password_confirmation'],
             ])
-            ->add('submit', SubmitType::class, ['label' => 'app.registration.register'])
+            ->add('submit', SubmitType::class, ['label' => 'app.security.register'])
         ;
     }
 }

@@ -6,9 +6,7 @@ app:
     contact: "Contact"
     login: "Login"
   ui:
-    title: "My App"
-    login: "Login"
-    logout: "Logout"
+    title: "Nails"
   common:
     name: "Name"
     email: "Email"
@@ -36,8 +34,12 @@ app:
   stylists:
     working_hours: 'Working hours'
     speciality: 'Speciality'
-  registration:
+  security:
     registration: "Registration"
     register: "Register"
     password: "Password"
     password_confirmation: "Password confirmation"
+    login: "Login"
+    logout: "Logout"
+    username: "Username"
+    if_you_do_not_have_an_account: "If you do not have an account, please"

@@ -12,14 +12,9 @@ use Twig\Environment;
 
 final class RenderHomepageController extends AbstractController
 {
-    public function __construct(
-        private Environment $twig,
-    ){
-    }
-
     #[Route(path: '/', name: 'app_homepage', methods: ['GET'])]
     public function __invoke(): Response
     {
-        return new RedirectResponse($this->generateUrl('app_reservation_index'));
+        return $this->render('homepage.html.twig');
     }
 }

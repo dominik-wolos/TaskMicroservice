@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="align-content-center m-4">
+    <div class="align-content-center m-4 row">
         {% for stylist in stylists %}
-            {% if false == loop.first%}
-                <hr>
-            {% endif %}
+        <div class="col-12 col-md-6">
+            <hr>
             <h2>{{ "app.common.name"| trans }} : {{ stylist.name }}</h2><br>
             <h3>{{ "app.common.age"| trans }} : {{ stylist.age }}</h3>
             <h3>{{ "app.stylists.speciality"| trans }} : {{ stylist.speciality }}</h3>
             <h3>{{ "app.stylists.working_hours"| trans }} : {{ stylist.working_hours }}</h3>
+        </div>
         {% endfor %}
     </div>
 {% endblock  %}

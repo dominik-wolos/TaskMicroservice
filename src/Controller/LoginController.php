@@ -31,7 +31,6 @@ class LoginController extends AbstractController
         if ($request->isMethod('POST')) {
             $email = $request->request->get('username');
             $password = $request->request->get('password');
-            $salt = md5(sprintf('%s-%s', $email, $password));
 
             $user = $this->entityManager
                 ->getRepository(User::class)
@@ -62,6 +61,6 @@ class LoginController extends AbstractController
     #[Route('/logout', name: 'app_logout', methods: ['GET'])]
     public function logout(): void
     {
-        $response = $this->security->logout();
+        $this->security->logout();
     }
 }
